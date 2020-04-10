@@ -22,11 +22,11 @@
     <el-container>
       <el-header>
         <!-- Header content -->
-        视频 - 后台管理界面
+        <h3>视频 - 后台管理界面</h3>
       </el-header>
       <el-main>
         <!-- Main content -->
-        <router-view></router-view>
+        <router-view :key="$route.path"></router-view>
       </el-main>
     </el-container>
   </el-container>
