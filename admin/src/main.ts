@@ -13,12 +13,14 @@ import router from './router'
 Vue.config.productionTip = false
 
 
-Vue.prototype.$http = axios.create(
+const http = axios.create(
   {
-    // baseURL: 'https://some-domain.com/api/',
-    baseURL: 'http://localhost:3000'
+    baseURL: process.env.VUE_APP_API_URL
   }
 )
+Vue.prototype.$httpajax = http
+Vue.prototype.$http = http
+
 new Vue({
   router,
   render: h => h(App)

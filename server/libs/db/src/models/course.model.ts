@@ -26,6 +26,6 @@ export class Course {
 
 
   // 数组字段
-  @arrayProp({ itemsRef: 'Episode' })
-  episodes: Ref<Episode>[]
+  // @arrayProp({ itemsRef: 'Episode' })
+  // episodes: Ref<Episode>[]
 }

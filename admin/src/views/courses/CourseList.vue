@@ -1,9 +1,8 @@
 <template>
   <div>
-    <h3>课时列表</h3>
+    <h3>{{field.title}}</h3>
     <div>
       <el-button type="success" size="small" @click="$router.push(`/courses/create`)">创建课程</el-button>
-      
     </div>
     <el-table :data="data.data" border="" stripe>
       <el-table-column

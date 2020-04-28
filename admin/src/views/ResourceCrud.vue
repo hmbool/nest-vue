@@ -9,6 +9,7 @@
       @row-del="remove"
       @on-laod="changePage"
       @sort-change="changeSort"
+      @search-change="search"
     ></avue-crud>
   </div>
 </template>
@@ -47,16 +48,26 @@ export default class ResourceList extends Vue {
   }
 
   async changeSort({ prop, order }) {
-    if(!order) {
-      this.query.sort = null
+    if (!order) {
+      this.query.sort = null;
     } else {
       this.query.sort = {
-        [prop]: order === 'ascending' ? 1 : -1
-      }
+        [prop]: order === "ascending" ? 1 : -1
+      };
     }
-    this.fetch()
+    this.fetch();
   }
-
+  async search(where, done) {
+    for (let k in where) {
+      const field = this.option.column.find(v => v.prop === k)
+      if (field.regex) {
+        where[k] = { $regex: where[k] }
+      }
+    }// 模糊匹配
+    this.query.where = where
+    this.fetch()
+    done();
+  }
   async fetch() {
     const res = await this.$http.get(`${this.resource}`, {
       params: {

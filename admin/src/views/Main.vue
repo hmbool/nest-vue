@@ -22,7 +22,8 @@
     <el-container>
       <el-header>
         <!-- Header content -->
-        <h3>视频 - 后台管理界面</h3>
+          <h3>视频 - 后台管理界面</h3>
+        
       </el-header>
       <el-main>
         <!-- Main content -->
@@ -60,4 +61,13 @@ export default class Main extends Vue {
 </script>
 
 <style>
+/* .avue-form__group {
+  flex-wrap:inherit
+}
+.avue-form__menu--center{
+  text-align: left
+}
+.avue-form__menu{
+  padding: 0
+} */
 </style>

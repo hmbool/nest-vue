@@ -20,10 +20,11 @@ export class CourseController {
   @Get('option')
   option() {
     return {
-      title: '课程管理111',
+      title: '课程管理',
+      searchMenuSpan:8,
       column: [
-        { prop: 'name', label: '课程名称', sortable: true },
-        { prop: 'cover', label: '课程封面图' },
+        { prop: 'name', label: '课程名称', sortable: true, search: true, regex: true, span: 24, row: true },
+        { prop: 'cover', label: '课程封面图', type: 'upload',width: 120, listType: 'picture-img', row: true, action: 'upload' }
       ]
     }
   }

@@ -16,16 +16,27 @@ const models = TypegooseModule.forFeature([
 @Global()
 @Module({
   imports: [
-    // 连接数据库
-    TypegooseModule.forRoot('mongodb://localhost/topfullstack', {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-      useFindAndModify: false,
+    TypegooseModule.forRootAsync({
+      useFactory() {
+        return {
+          uri: process.env.DB,
+          useNewUrlParser: true,
+          useUnifiedTopology: true,
+          useCreateIndex: true,
+          useFindAndModify: false,
+        }
+      }
     }),
+    // 连接数据库
+    // TypegooseModule.forRoot(process.env.DB, {
+    //   useNewUrlParser: true,
+    //   useUnifiedTopology: true,
+    //   useCreateIndex: true,
+    //   useFindAndModify: false,
+    // }),
     models,  // 导入
   ],
   providers: [DbService],
   exports: [DbService, models],  // 导出模型
 })
-export class DbModule {}
+export class DbModule { }

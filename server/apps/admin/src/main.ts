@@ -1,12 +1,10 @@
 import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
-
-
-
+import { NestExpressApplication } from '@nestjs/platform-express';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create<NestExpressApplication>(AppModule);
   // 跨域
   app.enableCors()
   // 使用 SwaggerModule 类初始化 Swagger
@@ -19,7 +17,8 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api-docs', app, document);
 
-  await app.listen(3000);
-  console.log( `http://localhost:3000/api-docs`)
+  const PROT = process.env.ADMIN_PROT || 3002
+  await app.listen(PROT);
+  console.log( `http://localhost:${PROT}/api-docs`)
 }
 bootstrap();
