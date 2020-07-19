@@ -1,5 +1,5 @@
 # nest-vue
-(nestjs)NodeJs+VueJs全栈开发《全栈之巅》视频网站+app+小程序
+(nestjs)NodeJs+VueJs
 
 # 全局安装
 npm i -g @nestjs/cli
